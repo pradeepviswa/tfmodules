@@ -12,3 +12,12 @@ resource "aws_instance" "vm" {
 output "public_ip" {
   value = aws_instance.vm[*].public_ip
 }
+
+output "ansible_inventory" {
+  value = <<EOF
+[webservers]
+%{ for ip in aws_instance.vm[*].public_ip ~}
+${ip}
+%{ endfor ~}
+EOF
+}
