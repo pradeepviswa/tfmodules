@@ -14,12 +14,12 @@ variable vm_name{
     default = ""
 }
 
-variable "key_name" {
+variable "key_name_vm" {
   type = string
   default = "key_l"
 }
 
-variable "count" {
+variable "count_vm" {
   type = integer
   default = 1
 }

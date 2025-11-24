@@ -26,6 +26,7 @@ override.tf.json
 .terraform.lock.hcl
 
 # ---- SSH Keys / Credentials ----
+ubuntu@*
 *.pem
 *.key
 *.pub
