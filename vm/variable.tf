@@ -20,6 +20,6 @@ variable "key_name_vm" {
 }
 
 variable "count_vm" {
-  type = integer
+  type = number
   default = 1
 }
