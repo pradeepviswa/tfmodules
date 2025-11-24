@@ -14,7 +14,7 @@ variable vm_name{
     default = ""
 }
 
-variable "env" {
+variable "key_name" {
   type = string
-  default = ""
+  default = "key_l"
 }
