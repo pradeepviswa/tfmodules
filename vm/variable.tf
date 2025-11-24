@@ -18,3 +18,8 @@ variable "key_name" {
   type = string
   default = "key_l"
 }
+
+variable "count" {
+  type = integer
+  default = 1
+}
