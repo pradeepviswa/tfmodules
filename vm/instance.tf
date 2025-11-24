@@ -1,4 +1,4 @@
-resource "aws_instance" "new_instance" {
+resource "aws_instance" "vm" {
     ami = var.ami_id
     instance_type = var.instance_type
     key_name = var.key_name
@@ -8,3 +8,6 @@ resource "aws_instance" "new_instance" {
     }
 }
 
+output "public_ip" {
+    value = aws_instance.vm.public_ip
+}
