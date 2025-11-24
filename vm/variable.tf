@@ -4,7 +4,7 @@ variable ami_id{
 
 }
 
-variable instanbce_type{
+variable instance_type{
     type = string
     default = ""
 }
