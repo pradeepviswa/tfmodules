@@ -10,10 +10,6 @@ resource "tls_private_key" "ssh_key" {
 resource "aws_key_pair" "generated_key" {
   key_name   = var.key_name
   public_key = tls_private_key.ssh_key.public_key_openssh
-
-  lifecycle {
-    prevent_destroy = true
-  }
 }
 
 resource "local_file" "private_key_pem" {
