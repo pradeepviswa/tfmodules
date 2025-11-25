@@ -17,7 +17,8 @@ output "ansible_inventory" {
   value = <<EOF
 [webservers]
 %{ for ip in aws_instance.vm[*].public_ip ~}
-${ip}
+${ip} ansible_user=ubuntu ansible_ssh_private_key_file={{key_path}}
 %{ endfor ~}
 EOF
 }
+
