@@ -3,7 +3,7 @@ resource "tls_private_key" "ssh_key" {
   rsa_bits  = 4096
 
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 }
 
