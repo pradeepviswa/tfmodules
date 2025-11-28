@@ -18,7 +18,7 @@ resource "local_file" "private_key_pem" {
   file_permission = "0600"
 
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 }
 
