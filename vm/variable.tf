@@ -23,3 +23,8 @@ variable "count_vm" {
   type = number
   default = 1
 }
+
+variable "allowed_ports" {
+  type = list(number)
+  default = [22, 8080, 3000]
+}
