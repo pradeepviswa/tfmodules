@@ -3,6 +3,7 @@ resource "aws_instance" "vm" {
   ami           = var.ami_id
   instance_type = var.instance_type
   key_name      = var.key_name_vm
+  vpc_security_group_ids = [aws_security_group.my_sg.id]
 
   tags = {
     Name = "${var.vm_name}-${count.index}"
