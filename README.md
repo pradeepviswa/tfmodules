@@ -12,6 +12,7 @@ module "key_file" {
   key_name = var.key_name
 }
 
+## 📌VM Module
 module "vm" {
   source        = "git::https://github.com/pradeepviswa/tfmodules.git//vm?ref=main"
   ami_id        = var.ami_id
@@ -24,12 +25,13 @@ module "vm" {
   ansible_user  = var.ansible_user
 }
 
+## 📌 Output – Public IPs
 output "public_ips" {
   value = module.vm.public_ips
 }
 
 
-
+## 📌 Generate Ansible Inventory File
 resource "local_file" "ansible_inventory" {
   filename = "${path.root}/../configure_vm/inventory/hosts.ini"
   content  = <<EOF
@@ -41,5 +43,29 @@ ${join("\n", [
 EOF
 }
 
+## 📌 Example Variables for VM Module
+ami_id        = "ami-0ecb62995f68bb549"
+instance_type = "t3.micro"
+vm_name       = "MyServer"
+count_vm      = 1
+allowed_ports = [22, 80, 8080, 3000]
+key_name      = "key_1"
+key_path      = "~/.ssh/key_1.pem"
+ansible_user  = "ubuntu"
 
+## 🚀 Deployment Steps
+1️⃣ Configure AWS Credentials
+export AWS_ACCESS_KEY_ID=""
+export AWS_SECRET_ACCESS_KEY=""
+
+2️⃣ Apply Terraform to Create VM(s)
+cd create_vm
+terraform apply --var-file=env/dev.tfvars -auto-approve
+
+3️⃣ Verify Ansible Inventory
+cd ../configure_vm
+ansible -i inventory/hosts.ini all --list-hosts
+
+4️⃣ Ping Servers via Ansible
+ansible -i inventory/hosts.ini all -m ping
 
