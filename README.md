@@ -4,7 +4,7 @@ This repository demonstrates how to use Terraform modules for creating SSH keys,
 
 ---
 
-## 📌 Key File Module
+## 📌 Key File Module (Only Key File will be generated)
 
 ```hcl
 module "key_file" {
@@ -15,7 +15,7 @@ module "key_file" {
 
 ---
 
-## 📌 VM Module
+## 📌 VM Module with Key File Generation
 
 ```hcl
 module "vm" {
