@@ -2,7 +2,7 @@ resource "aws_instance" "vm" {
   count         = var.count_vm
   ami           = var.ami_id
   instance_type = var.instance_type
-  key_name      = var.key_name_vm
+  key_name      = aws_key_pair.generated_key.key_name
   vpc_security_group_ids = [aws_security_group.my_sg.id]
 
   tags = {

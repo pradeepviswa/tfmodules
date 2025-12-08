@@ -14,9 +14,9 @@ variable vm_name{
     default = ""
 }
 
-variable "key_name_vm" {
-  type = string
-  default = "key_l"
+variable key_name {
+  description = "The name of the key."
+  type        = string
 }
 
 variable "count_vm" {
