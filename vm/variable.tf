@@ -19,6 +19,12 @@ variable "key_name" {
   type        = string
 }
 
+variable "key_path" {
+  description = "The path to the private key file."
+  type        = string
+  default     = ""
+}
+
 variable "count_vm" {
   type    = number
   default = 1
