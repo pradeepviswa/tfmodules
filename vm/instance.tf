@@ -16,9 +16,11 @@ output "public_ip" {
 
 resource "local_file" "ansible_inventory" {
   filename = "${path.module}/../configure_vm/inventory/hosts.ini"
-  content  = join("\n", [
-    "[webservers]",
-    for ip in aws_instance.vm[*].public_ip :
-    "${ip} ansible_user=${var.ansible_user} ansible_ssh_private_key_file=${var.key_path}"
-  ])
+  content = <<EOF
+[webservers]
+${join("\n", [
+  for ip in aws_instance.vm[*].public_ip :
+  "${ip} ansible_user=${var.ansible_user} ansible_ssh_private_key_file=${var.key_path}"
+])}
+EOF
 }
