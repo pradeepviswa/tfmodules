@@ -13,8 +13,8 @@ resource "aws_key_pair" "generated_key" {
 }
 
 resource "local_file" "private_key_pem" {
-  filename = "${path.root}/${var.key_name}.pem"
-  content  = tls_private_key.ssh_key.private_key_pem
+  filename        = "${path.root}/${var.key_name}.pem"
+  content         = tls_private_key.ssh_key.private_key_pem
   file_permission = "0600"
 
   lifecycle {
