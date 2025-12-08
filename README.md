@@ -46,3 +46,17 @@ key_path      = "~/.ssh/key_1.pem"
 ansible_user  = "ubuntu"
 
 
+# vm module test commands
+# Set AWS credentials as environment variables
+export AWS_ACCESS_KEY_ID=""
+export AWS_SECRET_ACCESS_KEY=""
+# Navigate to the Terraform create_vm directory
+cd create_vm
+# Apply Terraform
+terraform apply --var-file=env/dev.tfvars -auto-approve
+cd ..
+cd configure_vm
+ansible -i inventory/hosts.ini all --list-hosts
+ansible -i inventory/hosts.ini all -m ping 
+
+
