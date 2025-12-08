@@ -1,12 +1,11 @@
-# tfmodules
-## key_file
+# key_file
 module "key_file" {
   source   = "git::https://github.com/pradeepviswa/tfmodules.git//key_file?ref=main"
   key_name = "var.key_name"
 }
 
 
-## vm
+# vm
 module "vm" {
   source        = "git::https://github.com/pradeepviswa/tfmodules.git//vm?ref=main"
   ami_id        = var.ami_id
@@ -35,7 +34,7 @@ ${join("\n", [
 EOF
 }
 
-### vm module variable example:
+## vm module variable example:
 ami_id        = "ami-0ecb62995f68bb549"
 instance_type = "t3.micro"
 vm_name       = "MyServer"
@@ -46,13 +45,13 @@ key_path      = "~/.ssh/key_1.pem"
 ansible_user  = "ubuntu"
 
 
-### vm module test commands
-**Set AWS credentials as environment variables**
+## vm module test commands
+Set AWS credentials as environment variables
 export AWS_ACCESS_KEY_ID=""
 export AWS_SECRET_ACCESS_KEY=""
-**Navigate to the Terraform create_vm directory**
+Navigate to the Terraform create_vm directory
 cd create_vm
-**Apply Terraform**
+Apply Terraform
 terraform apply --var-file=env/dev.tfvars -auto-approve
 cd ..
 cd configure_vm
