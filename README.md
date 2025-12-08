@@ -46,7 +46,7 @@ key_path      = "~/.ssh/key_1.pem"
 ansible_user  = "ubuntu"
 
 
-# vm module test commands
+#### vm module test commands
 # Set AWS credentials as environment variables
 export AWS_ACCESS_KEY_ID=""
 export AWS_SECRET_ACCESS_KEY=""
