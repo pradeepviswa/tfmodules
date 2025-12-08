@@ -10,22 +10,16 @@ resource "aws_instance" "vm" {
   }
 }
 
-output "public_ip" {
+output "public_ips" {
   value = aws_instance.vm[*].public_ip
 }
 
-resource "local_file" "ansible_inventory" {
-  filename = "${path.module}/../configure_vm/inventory/hosts.ini"
-  content = <<EOF
-[webservers]
-${join("\n", [
-  for ip in aws_instance.vm[*].public_ip :
-  "${ip} ansible_user=${var.ansible_user} ansible_ssh_private_key_file=${var.key_path}"
-])}
-EOF
+output "ansible_user" {
+  value = var.ansible_user
 }
 
-output "ansible_inventory" {
-  value = local_file.ansible_inventory.content
+output "key_path" {
+  value = var.key_path
 }
+
 
